@@ -6,7 +6,7 @@
 # register your standby key and your standby BP node running this signing key will kick in after approx 4 full rotations. 
 # I have the script running via cron every 60 seconds. Based on tests, the longest it takes to figure out your node is offline and
 # the standby to kick in is around 8 minutes and 72 blocks which is not enough to be kicked. 
-# I recomend running this on an isolated seed node without API traffic to keep extra nodeos output down.
+# I recommend running this on an isolated seed node without API traffic to keep extra nodeos output down.
 #
 
 time=`date '+%Y-%m-%d %H:%M:%S'`

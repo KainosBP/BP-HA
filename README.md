@@ -10,3 +10,5 @@ I have the script running via cron every 60 seconds. Based on tests, the longest
 I recommend running this on an isolated seed node without API traffic to keep extra nodeos output down.
 
 Please be sure to look at the script and fill in your info where noted.
+
+Requirement for email alert to work is sendmail or postfix setup and configured to send email with mailutils installed. 

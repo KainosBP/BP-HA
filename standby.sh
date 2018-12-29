@@ -7,6 +7,7 @@
 # I have the script running via cron every 60 seconds. Based on tests, the longest it takes to figure out your node is offline and
 # the standby to kick in is around 8 minutes and 72 blocks which is not enough to be kicked. 
 # I recommend running this on an isolated seed node without API traffic to keep extra nodeos output down.
+# Requirement for email alert to work is sendmail or postfix setup and configured to send email with mailutils installed. 
 #
 
 time=`date '+%Y-%m-%d %H:%M:%S'`
@@ -25,6 +26,7 @@ tail -n 400 /telos/data/log/stderr.txt | grep "_block" | grep "$bpname" > /dev/n
         echo "BP NOT OK $time" >> /telos/bp_monitor.log #Edit the path for your log output here
         mail -s "BP1 DOWN!! Starting Failover" $email1 < /dev/null
         mail -s "BP1 DOWN!! Starting Failover" $email2 < /dev/null
+        #Edit teclos path here
         echo "/telos/oak-v1.4.5/build/programs/teclos/teclos wallet unlock --password $walletpw" | bash -
         #Optional Enter your website and node location also.
         echo "/telos/oak-v1.4.5/build/programs/teclos/teclos system regproducer $bpname $standbysignkey" | bash -

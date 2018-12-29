@@ -18,15 +18,16 @@ email2=YOUR ATT SMS#@mms.att.net
 walletpw=Monitor Node Wallet Password
 standbysignkey=StandbySigningKey
 
-tail -n 400 /telos/data/log/stderr.txt | grep "on_incoming_block" | grep "$bpname" > /dev/null 2>&1
+#Modify your nodeos output locaton here.
+tail -n 400 /telos/data/log/stderr.txt | grep "_block" | grep "$bpname" > /dev/null 2>&1
   if [ $? -ne 0 ]
     then
-        echo "BP NOT OK $time" >> /telos/bp_monitor.log
+        echo "BP NOT OK $time" >> /telos/bp_monitor.log #Edit the path for your log output here
         mail -s "BP1 DOWN!! Starting Failover" $email1 < /dev/null
         mail -s "BP1 DOWN!! Starting Failover" $email2 < /dev/null
         echo "/telos/oak-v1.4.5/build/programs/teclos/teclos wallet unlock --password $walletpw" | bash -
         #Optional Enter your website and node location also.
         echo "/telos/oak-v1.4.5/build/programs/teclos/teclos system regproducer $bpname $standbysignkey" | bash -
     else
-        echo "BP CHECK OK $time" >> /telos/bp_monitor.log
+        echo "BP CHECK OK $time" >> /telos/bp_monitor.log #Edit path for log output here
     fi

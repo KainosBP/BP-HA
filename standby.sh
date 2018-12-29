@@ -25,7 +25,8 @@ tail -n 400 /telos/data/log/stderr.txt | grep "on_incoming_block" | grep "$bpnam
         mail -s "BP1 DOWN!! Starting Failover" $email1 < /dev/null
         mail -s "BP1 DOWN!! Starting Failover" $email2 < /dev/null
         echo "/telos/oak-v1.4.5/build/programs/teclos/teclos wallet unlock --password $walletpw" | bash -
-        echo "/telos/oak-v1.4.5/build/programs/teclos/teclos system regproducer $bpname $standbysignkey https://www.kainosbp.com 840" | bash -
+        #Optional Enter your website and node location also.
+        echo "/telos/oak-v1.4.5/build/programs/teclos/teclos system regproducer $bpname $standbysignkey" | bash -
     else
         echo "BP CHECK OK $time" >> /telos/bp_monitor.log
     fi

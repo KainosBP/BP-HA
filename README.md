@@ -3,7 +3,7 @@ Script to monitor for Block Production and take action if production stops
 
 BP High Availability Script Created by J.T. Buice | kainosbp.com
 
-If you like this, vote for kainosblkpro!
+If you like this, please vote for kainosblkpro!
 
 This is a simple script to monitor the last 400 lines of your nodeos output for your BP name. If it doesn't show up, the script will register your standby key and your standby BP node running this signing key will kick in after approx 4 full rotations.  
 
